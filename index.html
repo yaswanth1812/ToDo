@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO-LIST</title>
+    <style>
+        body{
+            background-image: url("https://wallpaperaccess.com/full/2890525.jpg");
+            background-size:cover;
+            background-repeat: no-repeat;
+            
+        }
+        .main {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+        margin-top: 160px;
+        margin-left: 360px;
+        }
+        .one{
+            display: flex;
+            flex-direction: column;
+            border: 2px solid rgb(235, 232, 232);
+            border-radius: 4px;
+            width: 320px;
+            padding-left: 20px;
+            color: white;
+            height: 460px;
+            background-color: rgb(51, 50, 50);
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+        }
+        .todo{
+            text-align: center;
+            
+        }
+        table,tr,td{
+            width: 200px;
+        }
+        td{
+            width: fit-content;
+        }
+
+    </style>
+</head>
+<div class="main">
+<div class="one">
+    <h1 class="todo">Todo</h1>
+    <form action="">
+        <input type="text" placeholder="Add todo" required ><br><br>
+        <input type="submit" style="margin-left: 50px;">
+    </form>
+    <h3 class="pending" style="opacity: 0.7;">Pending</h3>
+    <table id="tab">
+    </table>
+    <h3 class="pending" style="opacity: 0.7;">Completed</h3>
+    <table id="tab1">
+    </table>
+</div>
+</div>
+<body>
+    <script>
+        var d= document.forms;
+        
+        d[0].addEventListener("submit",(e)=>{
+            e.preventDefault();
+            a=e.target[0].value;
+
+            var pendingg=document.getElementsByClassName("pending");58
+            pendingg[0].style.opacity="1"
+
+            var tb1= document.getElementById("tab")
+            var tr1= document.createElement("tr");
+            var td1= document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+
+
+            td1.innerHTML=a;
+            td2.innerHTML="<button class='tick'>&#10003</button>"
+            td3.innerHTML="<button class='cross'>&#10005</button>"  
+
+            if(a!== ""){
+
+                tr1.appendChild(td1);
+                tr1.appendChild(td2);
+                tr1.appendChild(td3);
+                tb1.appendChild(tr1);
+            }
+            
+            e.target[0].value=" "
+
+
+            td2.querySelector(".tick").addEventListener("click",()=>{
+                var tb1= document.getElementById("tab1");
+                var trow= document.createElement("tr");
+                var tdata= document.createElement("td");
+
+                tdata.innerHTML= td1.innerHTML; 
+                trow.appendChild(tdata);
+                tb1.appendChild(trow);
+
+                tr1.remove();
+            })
+
+
+            td3.querySelector(".cross").addEventListener("click",()=>{
+                tr1.remove();
+            })
+
+
+
+        })
+       
+        
+        
+
+    </script>
+</body>
+</html>
